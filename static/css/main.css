@@ -1,0 +1,149 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f6f7f9;
+  color: #1f2937;
+}
+
+/* Header */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #111827;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.header__nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.header__nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}
+
+.header__nav a:hover {
+  color: #111827;
+}
+
+/* Buttons */
+.button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.button--primary {
+  background: #111827;
+  color: white;
+}
+
+.button--secondary {
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+/* Auth page */
+.auth-page-wrapper {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.auth-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.InputField {
+  margin-bottom: 16px;
+}
+
+.InputField label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.Input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.ButtonGroup {
+  margin-top: 16px;
+}
+
+.TextLink {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.auth-switch {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 32px 0;
+  text-align: center;
+}
+
+.footer__nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.footer__nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+}
