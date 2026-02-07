@@ -1,4 +1,6 @@
+from typing import cast
 from django.contrib.auth import logout
+from .models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -21,7 +23,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['orders'] = Order.objects.filter(user=self.request.user).order_by('-created_at')
+        context['orders'] = Order.objects.filter(user=cast(User, self.request.user)).order_by('-created_at')
         return context
 
 

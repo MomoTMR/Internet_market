@@ -19,7 +19,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'home.html'
     context_object_name = 'products'
-    
+
     def get_paginate_by(self, queryset):
         try:
             per_page = int(self.request.GET.get('per_page', 5))

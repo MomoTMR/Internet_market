@@ -5,6 +5,7 @@ from decimal import Decimal
 
 User = get_user_model()
 
+
 class Command(BaseCommand):
     help = 'Initialize database with superuser, users, and products'
 
@@ -62,7 +63,7 @@ class Command(BaseCommand):
                 'quantity': 200,
                 'category': category
             },
-             {
+            {
                 'name': 'Pale Ale',
                 'slug': 'pale-ale',
                 'description': 'Balanced pale ale with fruity notes.',
@@ -70,7 +71,7 @@ class Command(BaseCommand):
                 'quantity': 75,
                 'category': category
             },
-             {
+            {
                 'name': 'Porter',
                 'slug': 'porter',
                 'description': 'Dark style of beer developed in London.',
@@ -85,6 +86,6 @@ class Command(BaseCommand):
                 Product.objects.create(**p_data)
                 self.stdout.write(self.style.SUCCESS(f'Product "{p_data["name"]}" created'))
             else:
-                 self.stdout.write(self.style.WARNING(f'Product "{p_data["name"]}" already exists'))
+                self.stdout.write(self.style.WARNING(f'Product "{p_data["name"]}" already exists'))
 
         self.stdout.write(self.style.SUCCESS('Data initialization complete'))

@@ -131,8 +131,11 @@ def cart_add(request, product_id: int):
     })
 
 
+from typing import Any, cast
+from users.models import User
+
 @require_POST
-def cart_remove(request, product_id: int) -> JsonResponse:
+def cart_remove(request, product_id: int) -> Any:
     """
     Удалить товар из корзины.
 
@@ -227,7 +230,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         """Получить список заказов текущего пользователя."""
         if getattr(self, "swagger_fake_view", False):
             return Order.objects.none()
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(user=cast(User, self.request.user))
 
     def perform_create(self, serializer):
         """Создать новый заказ для текущего пользователя."""
