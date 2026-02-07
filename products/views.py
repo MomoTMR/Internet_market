@@ -19,6 +19,15 @@ class ProductListView(ListView):
     model = Product
     template_name = 'home.html'
     context_object_name = 'products'
+    
+    def get_paginate_by(self, queryset):
+        try:
+            per_page = int(self.request.GET.get('per_page', 5))
+            if per_page in [5, 10, 20, 50]:
+                return per_page
+        except ValueError:
+            pass
+        return 5
 
     def get_queryset(self) -> QuerySet[Product]:
         queryset = Product.objects.filter(is_active=True).select_related('category')
@@ -33,6 +42,14 @@ class ProductListView(ListView):
         if category_slug:
             queryset = queryset.filter(category__slug=category_slug)
 
+        sort = self.request.GET.get('sort', 'popular')
+        if sort == 'price':
+            queryset = queryset.order_by('price')
+        elif sort == 'name':
+            queryset = queryset.order_by('name')
+        else:  # popular / default
+            queryset = queryset.order_by('-id')
+
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -40,6 +57,7 @@ class ProductListView(ListView):
         context['categories'] = Category.objects.all()
         context['current_category'] = self.request.GET.get('category')
         context['search_query'] = self.request.GET.get('search')
+        context['current_sort'] = self.request.GET.get('sort', 'popular')
         return context
 
 
