@@ -1,0 +1,276 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f6f7f9;
+  color: #1f2937;
+}
+
+/* Header */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #111827;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.header__nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.header__nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}
+
+.header__nav a:hover {
+  color: #111827;
+}
+
+/* Buttons */
+.button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.button--primary {
+  background: #111827;
+  color: white;
+}
+
+.button--secondary {
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+/* Auth page */
+.auth-page-wrapper {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.auth-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.InputField {
+  margin-bottom: 16px;
+}
+
+.InputField label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.Input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.ButtonGroup {
+  margin-top: 16px;
+}
+
+.TextLink {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.auth-switch {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 32px 0;
+  text-align: center;
+}
+
+.footer__nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.footer__nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* ============================================ */
+/* СТИЛИ ДЛЯ КОРЗИНЫ */
+/* ============================================ */
+
+/* Нотификации */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  z-index: 9999;
+  transform: translateX(400px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 350px;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification--success {
+  background-color: #10b981;
+}
+
+.notification--error {
+  background-color: #ef4444;
+}
+
+/* Счетчик корзины в header */
+.cart-icon {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+
+/* Пустая корзина */
+.cart-empty {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.cart-empty i {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.cart-empty h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.cart-empty p {
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+/* Анимация удаления товара */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+.cart-item.removing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Состояния кнопок */
+.quantity-btn-cart:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button--checkout:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.2s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+
+  .cart-badge {
+    min-width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+}
