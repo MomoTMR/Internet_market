@@ -26,6 +26,13 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         context['orders'] = Order.objects.filter(user=cast(User, self.request.user)).order_by('-created_at')
         return context
 
+    def post(self, request, *args, **kwargs):
+        user = cast(User, request.user)
+        user.first_name = request.POST.get('first_name', user.first_name)
+        user.last_name = request.POST.get('last_name', user.last_name)
+        user.save()
+        return redirect('users:profile')
+
 
 @require_POST
 def logout_view(request):

@@ -34,7 +34,8 @@
       <div id="account-info" class="tab-pane">
         <div class="account-form-container">
           <h2>Personal Info</h2>
-          <form id="account-info-form">
+          <form id="account-info-form" method="post">
+            {% csrf_token %}
 
             <div class="checkout-form-group">
               <label>First Name</label>
