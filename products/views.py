@@ -22,12 +22,12 @@ class ProductListView(ListView):
 
     def get_paginate_by(self, queryset):
         try:
-            per_page = int(self.request.GET.get('per_page', 5))
-            if per_page in [5, 10, 20, 50]:
+            per_page = int(self.request.GET.get('per_page', 6))
+            if per_page in [6, 12, 24, 48]:
                 return per_page
         except ValueError:
             pass
-        return 5
+        return 6
 
     def get_queryset(self) -> QuerySet[Product]:
         queryset = Product.objects.filter(is_active=True).select_related('category')

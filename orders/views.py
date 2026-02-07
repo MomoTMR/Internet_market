@@ -59,7 +59,14 @@ class OrderCreateView(LoginRequiredMixin, View):
         cart = Cart(request)
         if len(cart) == 0:
             return redirect('orders:cart')
-        form = OrderCreateForm()
+
+        initial_data = {}
+        if request.user.is_authenticated:
+            initial_data['full_name'] = f"{request.user.first_name} {request.user.last_name}".strip()
+            # Assuming the custom User model has a 'phone' field
+            initial_data['phone'] = getattr(request.user, 'phone', '')
+
+        form = OrderCreateForm(initial=initial_data)
         return render(request, 'checkout.html', {'cart': cart, 'form': form})
 
     def post(self, request):

@@ -65,46 +65,29 @@ if (productPageContent) {
         });
     }
 
-    const cartControls = document.querySelector('.cart-controls');
-    if (cartControls) {
-        const addToCartBtn = cartControls.querySelector('#add-to-cart-btn');
-        const quantityCounter = cartControls.querySelector('#quantity-counter');
+    // Product Detail Page Quantity Logic
+    const quantityContainer = document.querySelector('.quantity-controls');
+    if (quantityContainer) {
+        const minusBtn = quantityContainer.querySelector('.qty-btn-minus');
+        const plusBtn = quantityContainer.querySelector('.qty-btn-plus');
+        const qtyInput = quantityContainer.querySelector('.qty-input');
 
-        if (addToCartBtn && quantityCounter) {
-            const decreaseBtn = quantityCounter.querySelector('[data-action="decrease"]');
-            const increaseBtn = quantityCounter.querySelector('[data-action="increase"]');
-            const quantityValueSpan = quantityCounter.querySelector('.quantity-value');
-            let quantity = 0;
-
-            function updateView() {
-                if (quantity === 0) {
-                    addToCartBtn.classList.remove('is-hidden');
-                    quantityCounter.classList.add('is-hidden');
-                } else {
-                    addToCartBtn.classList.add('is-hidden');
-                    quantityCounter.classList.remove('is-hidden');
-                    quantityValueSpan.textContent = `${quantity} in cart`;
-                }
-            }
-
-            addToCartBtn.addEventListener('click', function () {
-                quantity = 1;
-                updateView();
-            });
-
-            decreaseBtn.addEventListener('click', function () {
-                if (quantity > 0) {
-                    quantity--;
-                    updateView();
+        if (minusBtn && plusBtn && qtyInput) {
+            minusBtn.addEventListener('click', () => {
+                let val = parseInt(qtyInput.value);
+                if (val > parseInt(qtyInput.min || 1)) {
+                    qtyInput.value = val - 1;
                 }
             });
 
-            increaseBtn.addEventListener('click', function () {
-                quantity++;
-                updateView();
+            plusBtn.addEventListener('click', () => {
+                let val = parseInt(qtyInput.value);
+                let max = parseInt(qtyInput.max);
+                // If max is set, check it; otherwise just increment
+                if (!max || val < max) {
+                    qtyInput.value = val + 1;
+                }
             });
-
-            updateView();
         }
     }
 }

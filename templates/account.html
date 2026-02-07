@@ -35,9 +35,14 @@
         <div class="account-form-container">
           <h2>Personal Info</h2>
           <form id="account-info-form">
+
             <div class="checkout-form-group">
-              <label>Full Name</label>
-              <input type="text" class="Input" value="{{ user.username }}">
+              <label>First Name</label>
+              <input type="text" class="Input" name="first_name" value="{{ user.first_name }}">
+            </div>
+            <div class="checkout-form-group">
+              <label>Last Name</label>
+              <input type="text" class="Input" name="last_name" value="{{ user.last_name }}">
             </div>
             <div class="checkout-form-group">
               <label>Email</label>
