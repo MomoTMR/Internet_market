@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | Hop & Barley{% endblock %}
+
+{% block content %}
+<div class="container main-content-grid">
+    <!-- Sidebar can be optional here, using full width for contact page might be better, 
+         but user asked for "page contact", let's make it look nice. 
+         Reusing main-content-grid to keep sidebar if desired, or just a centered container.
+         Let's use a centered container for the contact info. -->
+
+    <div class="contact-page-container" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto; padding: 40px 0;">
+        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 24px; color: #111827;">Contact Us</h1>
+
+        <div class="contact-card"
+            style="background: white; padding: 32px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <h2 style="font-size: 24px; margin-bottom: 20px; color: #111827;">Hopfen & Malz GmbH</h2>
+
+            <div class="contact-info-grid" style="display: grid; gap: 20px;">
+                <div class="info-item">
+                    <h3
+                        style="font-size: 14px; text-transform: uppercase; color: #6b7280; margin-bottom: 4px; font-weight: 600;">
+                        Address</h3>
+                    <p style="font-size: 16px; color: #374151;">
+                        Hopfenstraße 12<br>
+                        80335 München<br>
+                        Germany
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h3
+                        style="font-size: 14px; text-transform: uppercase; color: #6b7280; margin-bottom: 4px; font-weight: 600;">
+                        Postal Address</h3>
+                    <p style="font-size: 16px; color: #374151;">
+                        Postfach 12345<br>
+                        80335 München<br>
+                        Germany
+                    </p>
+                </div>
+
+                <div class="info-item">
+                    <h3
+                        style="font-size: 14px; text-transform: uppercase; color: #6b7280; margin-bottom: 4px; font-weight: 600;">
+                        Contact</h3>
+                    <p style="font-size: 16px; color: #374151; margin-bottom: 8px;">
+                        <i class="fa-solid fa-envelope" style="width: 20px; color: #9ca3af;"></i>
+                        <a href="mailto:info@hopfen-malz.de"
+                            style="color: #111827; text-decoration: none;">info@hopfen-malz.de</a>
+                    </p>
+                    <p style="font-size: 16px; color: #374151; margin-bottom: 8px;">
+                        <i class="fa-solid fa-phone" style="width: 20px; color: #9ca3af;"></i>
+                        +49 89 12345678
+                    </p>
+                    <p style="font-size: 16px; color: #374151; margin-bottom: 8px;">
+                        <i class="fa-solid fa-fax" style="width: 20px; color: #9ca3af;"></i>
+                        +49 89 12345679
+                    </p>
+                    <p style="font-size: 16px; color: #374151;">
+                        <i class="fa-brands fa-microsoft" style="width: 20px; color: #9ca3af;"></i>
+                        <a href="#" style="color: #111827; text-decoration: none;">Teams: teams@hopfen-malz.de</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="map-placeholder"
+                style="margin-top: 32px; height: 300px; background-color: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af;">
+                <p><i class="fa-solid fa-map-location-dot"
+                        style="font-size: 48px; margin-bottom: 12px; display: block; text-align: center;"></i> Map
+                    Placeholder (München)</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
