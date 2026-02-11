@@ -66,6 +66,29 @@ class ProductDetailView(DetailView):
     template_name = 'product_detail.html'
     context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.object
+
+        # Add reviews
+        context['reviews'] = product.reviews.all()
+
+        # Check if user can review (authenticated and purchased)
+        if self.request.user.is_authenticated:
+            from reviews.models import Review
+            from reviews.forms import ReviewForm
+
+            user_can_review = (
+                Review.user_has_purchased(self.request.user, product) and
+                not Review.objects.filter(user=self.request.user, product=product).exists()
+            )
+            context['user_can_review'] = user_can_review
+            context['review_form'] = ReviewForm()
+        else:
+            context['user_can_review'] = False
+
+        return context
+
 
 class GuidesRecipesView(TemplateView):
     template_name = 'guides-recipes.html'
