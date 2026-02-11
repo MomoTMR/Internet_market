@@ -50,6 +50,7 @@
           </div>
           <!-- Add to Cart Button -->
           <button type="button" class="button button--primary btn-add-to-cart" data-product-id="{{ product.id }}" {% if product.stock == 0 %}disabled{% endif %}>
+            product.stock==0 %}disabled{% endif %}>
             <i class="fa-solid fa-cart-shopping"></i>
             {% if product.stock > 0 %}Add to Cart{% else %}Out of Stock{% endif %}
           </button>

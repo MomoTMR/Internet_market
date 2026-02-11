@@ -19,8 +19,7 @@
             <div class="category-links-group">
                 <!-- Ссылка на все товары -->
                 <div class="category-item">
-                    <a href="{% url 'products:products' %}"
-                        class="{% if not current_category %}active-category{% endif %}">
+                    <a href="{% url 'products' %}" class="{% if not current_category %}active-category{% endif %}">
                         All Products
                     </a>
                 </div>
@@ -28,7 +27,7 @@
                 <!-- Динамический список из БД -->
                 {% for cat in categories %}
                 <div class="category-item">
-                    <a href="{% url 'products:products' %}?category={{ cat.slug }}"
+                    <a href="{% url 'products' %}?category={{ cat.slug }}"
                         class="{% if current_category == cat.slug %}active-category{% endif %}">
                         {{ cat.name }}
                     </a>
@@ -49,7 +48,7 @@
                 <a href="?sort=popular{% if current_category %}&category={{ current_category }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}&per_page={{ page_obj.paginator.per_page }}"
                     class="sort-button {% if current_sort == 'popular' or not current_sort %}active-sort{% endif %}">Popular</a>
             </div>
-            <form action="{% url 'products:products' %}" method="get" class="search-input-wrapper">
+            <form action="{% url 'products' %}" method="get" class="search-input-wrapper">
                 <input type="text" name="search" placeholder="Search ingredients..." class="search-input"
                     value="{{ search_query|default:'' }}">
                 <button type="submit" class="search-button" aria-label="Search">
@@ -62,7 +61,7 @@
         <div class="product-grid">
             {% if products %}
             {% for product in products %}
-            <a href="{% url 'products:product_detail' slug=product.slug %}" class="product-card-link">
+            <a href="{% url 'product_detail' slug=product.slug %}" class="product-card-link">
                 <div class="product-card">
                     {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-card__image">
@@ -102,10 +101,10 @@
             <form method="get" class="per-page-form">
                 <label for="per_page">Items per page:</label>
                 <select name="per_page" id="per_page" onchange="this.form.submit()">
-                    <option value="6" {% if page_obj.paginator.per_page == 6 %}selected{% endif %}>6</option>
-                    <option value="12" {% if page_obj.paginator.per_page == 12 %}selected{% endif %}>12</option>
-                    <option value="24" {% if page_obj.paginator.per_page == 24 %}selected{% endif %}>24</option>
-                    <option value="48" {% if page_obj.paginator.per_page == 48 %}selected{% endif %}>48</option>
+                    <option value="6" {% if page_obj.paginator.per_page==6 %}selected{% endif %}>6</option>
+                    <option value="12" {% if page_obj.paginator.per_page==12 %}selected{% endif %}>12</option>
+                    <option value="24" {% if page_obj.paginator.per_page==24 %}selected{% endif %}>24</option>
+                    <option value="48" {% if page_obj.paginator.per_page==48 %}selected{% endif %}>48</option>
                 </select>
                 {% if current_category %}<input type="hidden" name="category" value="{{ current_category }}">{% endif %}
                 {% if search_query %}<input type="hidden" name="search" value="{{ search_query }}">{% endif %}

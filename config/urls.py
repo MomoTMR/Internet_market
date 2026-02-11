@@ -40,6 +40,7 @@ urlpatterns = [
 
     path('accounts/', include('users.urls')),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('reviews/', include('reviews.urls')),
     path('', include('orders.urls')),
     path('', include('products.urls')),
 
